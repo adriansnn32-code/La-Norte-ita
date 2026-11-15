@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Norteñita</title>
+<meta name="description" content="Empanadas y pizza. Armá tu pedido y mandalo por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#A62B1F;
+  --ochre:#F2B33D;
+  --dark:#231510;
+  --cream:#FFF4E0;
+  --bg:#FAF5EC;
+  --band:#F0E6D6;
+  --muted:#5A463C;
+  --display:'Alfa Slab One', Georgia, serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Figtree',system-ui,sans-serif;color:var(--dark);background:var(--bg)}
+[hidden]{display:none!important}
+a:focus-visible,button:focus-visible{outline:3px solid var(--dark);outline-offset:2px;box-shadow:0 0 0 6px var(--ochre)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+h1,h2{font-family:var(--display);font-weight:400;margin:0}
+h2{font-size:clamp(34px,6vw,44px);line-height:1.1}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 24px;font-weight:700;font-size:17px;text-decoration:none}
+.btn:hover{filter:brightness(1.07)}
+.btn-ochre{background:var(--ochre);color:var(--dark)}
+.btn-line{border:2px solid var(--cream);color:var(--cream)}
+.btn-big{min-height:52px;padding:0 28px;font-size:18px}
+
+/* Hero */
+.hero{background:var(--red);color:var(--cream)}
+.top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:28px 0}
+.logo{font-family:var(--display);font-size:34px;line-height:1}
+.hero-body{display:flex;flex-wrap:wrap;align-items:center;gap:40px;padding:40px 0 72px}
+.hero-text{flex:1 1 460px;min-width:0;display:flex;flex-direction:column;gap:24px}
+.eyebrow{font-size:15px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FFD27A}
+.hero h1{font-size:clamp(40px,8vw,64px);line-height:1.04;text-wrap:balance}
+.hero p{margin:0;font-size:20px;line-height:1.5;max-width:520px}
+.actions{display:flex;flex-wrap:wrap;gap:16px}
+.hero-art{flex:1 1 300px;min-width:0;display:flex;justify-content:center}
+.hero-art svg{width:100%;max-width:440px;height:auto}
+.stripe{height:28px;background:linear-gradient(to bottom,var(--ochre) 0 8px,var(--dark) 8px 20px,var(--ochre) 20px 28px)}
+.stripe.red{background:linear-gradient(to bottom,var(--ochre) 0 8px,var(--red) 8px 20px,var(--ochre) 20px 28px)}
+
+/* Precios */
+.section{padding:72px 0}
+.stack{display:flex;flex-direction:column;gap:40px}
+.lead{margin:0;font-size:18px;line-height:1.5;color:var(--muted)}
+#precios h2{color:var(--red)}
+.cards{display:flex;flex-wrap:wrap;gap:24px}
+.card{flex:1 1 280px;min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:40px;padding:32px}
+.card .name{font-size:24px;font-weight:700}
+.card .sub{font-size:18px;margin-top:6px}
+.card .price{font-family:var(--display);font-size:clamp(44px,9vw,56px);line-height:1}
+.card.ochre{background:var(--ochre);color:var(--dark)}
+.card.red{background:var(--red);color:var(--cream)}
+.card.dark{background:var(--dark);color:var(--cream)}
+.tag{display:inline-block;margin-top:10px;padding:6px 12px;background:var(--ochre);color:var(--dark);font-size:15px;font-weight:700}
+
+/* Pedido */
+#pedido{background:var(--band)}
+#pedido h2{color:var(--red)}
+.order{display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start}
+.order-intro{flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:16px}
+.panel{flex:1 1 440px;min-width:0;padding:24px;background:var(--bg);border:3px solid var(--dark);display:flex;flex-direction:column;gap:8px}
+.row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:14px 0;border-bottom:1px solid #CDBFAA}
+.row .info{flex:1 1 200px;min-width:0}
+.row .pname{font-size:20px;font-weight:700}
+.row .unit{font-size:16px;color:var(--muted)}
+.qty{display:flex;align-items:center;gap:4px}
+.step{width:44px;height:44px;border:2px solid var(--dark);background:var(--bg);color:var(--dark);font-family:inherit;font-size:24px;line-height:1;cursor:pointer}
+.step:hover{background:var(--ochre)}
+.qty output{min-width:44px;text-align:center;font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}
+.total{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:20px 0 8px}
+.total .label{font-size:20px;font-weight:700}
+.total output{font-family:var(--display);font-size:40px;line-height:1;color:var(--red);font-variant-numeric:tabular-nums}
+.listo{display:flex;align-items:center;justify-content:center;min-height:56px;margin-top:8px;background:var(--dark);color:var(--cream);font-weight:700;font-size:18px;text-decoration:none}
+.listo:hover{filter:brightness(1.25)}
+.vacio{display:flex;align-items:center;justify-content:center;min-height:56px;margin-top:8px;padding:0 12px;border:2px dashed #8A7566;color:var(--muted);font-size:16px;text-align:center}
+
+/* Contacto */
+#contacto{background:var(--dark);color:var(--cream)}
+#contacto h2{color:var(--ochre)}
+.info-grid{display:flex;flex-wrap:wrap;gap:32px}
+.info-grid > div{flex:1 1 260px;min-width:0;display:flex;flex-direction:column;gap:8px}
+.k{font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ochre)}
+.v{font-size:22px;line-height:1.35}
+
+footer{background:var(--dark);color:var(--cream)}
+.foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:28px 24px}
+.foot .logo{font-size:24px}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="top">
+      <div class="logo">Norteñita</div>
+      <a class="btn btn-ochre" href="#pedido">Hacer un pedido</a>
+    </div>
+    <div class="hero-body">
+      <div class="hero-text">
+        <div class="eyebrow">Empanadas y pizza</div>
+        <h1>Empanadas por docena y pizza para pedir hoy</h1>
+        <p>Mirá los precios, armá tu pedido y mandalo por WhatsApp en un toque.</p>
+        <div class="actions">
+          <a class="btn btn-ochre btn-big" href="#pedido">Armar mi pedido</a>
+          <a class="btn btn-line btn-big" href="#precios">Ver precios</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <svg viewBox="0 0 440 320" aria-hidden="true">
+          <ellipse cx="220" cy="268" rx="196" ry="18" fill="#7E1D14"/>
+          <path d="M30 252 C30 112 120 42 220 42 C320 42 410 112 410 252 Z" fill="#F2B33D" stroke="#231510" stroke-width="6" stroke-linejoin="round"/>
+          <path d="M58 252 C58 130 134 68 220 68 C306 68 382 130 382 252" fill="none" stroke="#231510" stroke-width="7" stroke-dasharray="1 17" stroke-linecap="round"/>
+          <path d="M104 206 C114 148 152 112 202 100" fill="none" stroke="#FFE19A" stroke-width="10" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="stripe"></div>
+
+<main>
+  <section id="precios" class="section">
+    <div class="wrap stack">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <h2>Precios</h2>
+        <p class="lead">Llevando la docena ahorrás $1.000 frente a dos medias docenas.</p>
+      </div>
+      <div class="cards">
+        <div class="card ochre">
+          <div>
+            <div class="name">Media docena</div>
+            <div class="sub">6 empanadas</div>
+          </div>
+          <div class="price">$12.000</div>
+        </div>
+        <div class="card red">
+          <div>
+            <div class="name">Docena</div>
+            <div class="sub">12 empanadas</div>
+            <div class="tag">Ahorrás $1.000</div>
+          </div>
+          <div class="price">$23.000</div>
+        </div>
+        <div class="card dark">
+          <div>
+            <div class="name">Pizza</div>
+            <div class="sub">Precio por pizza</div>
+          </div>
+          <div class="price">$25.000</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pedido" class="section">
+    <div class="wrap order">
+      <div class="order-intro">
+        <h2>Armá tu pedido</h2>
+        <p class="lead">Elegí cuánto querés de cada cosa. Al final se abre WhatsApp con tu pedido y el total ya escritos.</p>
+      </div>
+      <div class="panel">
+        <div class="row" data-id="media">
+          <div class="info"><div class="pname">Media docena de empanadas</div><div class="unit">$12.000 c/u</div></div>
+          <div class="qty">
+            <button class="step" type="button" data-d="-1" aria-label="Quitar media docena de empanadas">−</button>
+            <output>0</output>
+            <button class="step" type="button" data-d="1" aria-label="Agregar media docena de empanadas">+</button>
+          </div>
+        </div>
+        <div class="row" data-id="docena">
+          <div class="info"><div class="pname">Docena de empanadas</div><div class="unit">$23.000 c/u</div></div>
+          <div class="qty">
+            <button class="step" type="button" data-d="-1" aria-label="Quitar docena de empanadas">−</button>
+            <output>0</output>
+            <button class="step" type="button" data-d="1" aria-label="Agregar docena de empanadas">+</button>
+          </div>
+        </div>
+        <div class="row" data-id="pizza">
+          <div class="info"><div class="pname">Pizza</div><div class="unit">$25.000 c/u</div></div>
+          <div class="qty">
+            <button class="step" type="button" data-d="-1" aria-label="Quitar pizza">−</button>
+            <output>0</output>
+            <button class="step" type="button" data-d="1" aria-label="Agregar pizza">+</button>
+          </div>
+        </div>
+        <div class="total">
+          <div class="label">Total</div>
+          <output id="total" aria-live="polite">$0</output>
+        </div>
+        <a id="listo" class="listo" href="#" target="_blank" rel="noopener" hidden>Pedido Listo</a>
+        <div id="vacio" class="vacio">Sumá algo para poder enviar el pedido</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="section">
+    <div class="wrap stack">
+      <h2>Dónde y cuándo</h2>
+      <div class="info-grid">
+        <div><div class="k">WhatsApp</div><div class="v">+54 9 11 6263-8475</div></div>
+        <div><div class="k">Horarios</div><div class="v">Lunes a domingo, de 19:00 a 00:00</div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="stripe red"></div>
+<footer>
+  <div class="wrap foot">
+    <div class="logo">Norteñita</div>
+    <div>Empanadas y pizza</div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var PHONE = '5491162638475';
+  var items = {
+    media:  { name: 'Media docena de empanadas', unit: 12000 },
+    docena: { name: 'Docena de empanadas',       unit: 23000 },
+    pizza:  { name: 'Pizza',                     unit: 25000 }
+  };
+  var qty = { media: 0, docena: 0, pizza: 0 };
+
+  var totalEl = document.getElementById('total');
+  var listo = document.getElementById('listo');
+  var vacio = document.getElementById('vacio');
+
+  function fmt(n) {
+    return '$' + String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  }
+
+  function render() {
+    var total = 0, lines = [];
+    Object.keys(items).forEach(function (id) {
+      var q = qty[id];
+      total += q * items[id].unit;
+      if (q) lines.push(q + ' x ' + items[id].name);
+      document.querySelector('.row[data-id="' + id + '"] output').textContent = q;
+    });
+    totalEl.textContent = fmt(total);
+    var has = total > 0;
+    listo.hidden = !has;
+    vacio.hidden = has;
+    if (has) {
+      var msg = 'Hola Norteñita, quiero hacer este pedido:\n' + lines.join('\n') + '\nTotal: ' + fmt(total);
+      listo.href = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(msg);
+    }
+  }
+
+  document.querySelectorAll('.row').forEach(function (row) {
+    var id = row.getAttribute('data-id');
+    row.querySelectorAll('.step').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var d = parseInt(btn.getAttribute('data-d'), 10);
+        qty[id] = Math.max(0, Math.min(99, qty[id] + d));
+        render();
+      });
+    });
+  });
+
+  render();
+})();
+</script>
+</body>
+                                                                                                 </html>
